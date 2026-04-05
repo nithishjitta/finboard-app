@@ -2,7 +2,7 @@
 
 A personal finance dashboard I built to practice React state management, role-based UI, and data visualization. Tracks income, expenses, and spending patterns across categories.
 
-**Live demo:** _add your link here_
+**Live demo:** [_add your link here_](https://finboard-app-rho.vercel.app/)
 
 ---
 

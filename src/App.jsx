@@ -35,6 +35,14 @@ const NAV = [
   },
 ];
 
+const BrandLogo = () => (
+  <svg viewBox="0 0 30 30" fill="none" width="26" height="26">
+    <rect width="30" height="30" rx="8" fill="var(--accent)"/>
+    <path d="M6 21l5-9 4 5 3-4 5 8" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="21.5" cy="8.5" r="2.5" fill="rgba(255,255,255,0.9)"/>
+  </svg>
+);
+
 function AppShell() {
   const { state, dispatch } = useApp();
   const { activeTab, user, darkMode, sidebarOpen } = state;
@@ -87,7 +95,6 @@ function AppShell() {
       {/* ── Topbar ── */}
       <header className="topbar">
         <div className="topbar-left">
-          {/* Collapse toggle — only visible on desktop; hidden on mobile via CSS */}
           <button className="topbar-btn topbar-menu-btn"
             onClick={() => dispatch({ type: 'TOGGLE_SIDEBAR' })} title="Toggle sidebar">
             <Icon size={17}>
@@ -96,16 +103,24 @@ function AppShell() {
               <line x1="3" y1="19" x2="21" y2="19"/>
             </Icon>
           </button>
+
+          {/* Desktop: current page name */}
           <span className="topbar-page-title">{currentPage}</span>
+
+          {/* Mobile only: logo + FinBoard */}
+          <div className="topbar-mobile-brand">
+            <BrandLogo/>
+            <span className="topbar-mobile-brand-name">FinBoard</span>
+          </div>
         </div>
+
         <div className="topbar-right">
-          <button className="topbar-btn" onClick={() => dispatch({ type: 'SET_DARK', val: !darkMode })}
+          <button className="topbar-btn"
+            onClick={() => dispatch({ type: 'SET_DARK', val: !darkMode })}
             title={darkMode ? 'Switch to light' : 'Switch to dark'}>
             {darkMode
-              ? /* Sun — shown when dark, click goes light */
-                <Icon size={17}><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></Icon>
-              : /* Moon — shown when light, click goes dark */
-                <Icon size={17}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></Icon>
+              ? <Icon size={17}><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></Icon>
+              : <Icon size={17}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></Icon>
             }
           </button>
           <div className="topbar-avatar" onClick={() => setTab('profile')} title="My profile">
@@ -122,10 +137,11 @@ function AppShell() {
         {activeTab === 'profile'      && <Profile />}
       </main>
 
-      {/* ── Mobile bottom navigation (replaces sidebar on mobile) ── */}
+      {/* ── Mobile bottom navigation ── */}
       <nav className="mobile-nav">
         {NAV.map(n => (
-          <button key={n.id} className={`mn-btn ${activeTab === n.id ? 'active' : ''}`} onClick={() => setTab(n.id)}>
+          <button key={n.id} className={`mn-btn ${activeTab === n.id ? 'active' : ''}`}
+            onClick={() => setTab(n.id)}>
             <Icon size={20}>{n.icon}</Icon>
             <span>{n.label}</span>
             {activeTab === n.id && <span className="mn-dot"/>}
