@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Arjun Mehta",
+    "email": "arjun@finboard.app",
+    "password": "admin123",
+    "role": "admin",
+    "avatar": "AM",
+    "joined": "2024-01-15"
+  },
+  {
+    "id": 2,
+    "name": "Priya Sharma",
+    "email": "priya@finboard.app",
+    "password": "viewer123",
+    "role": "viewer",
+    "avatar": "PS",
+    "joined": "2024-03-22"
+  }
+]

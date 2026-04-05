@@ -1,0 +1,9 @@
+[
+  { "month": "Oct", "year": 2025, "income": 85000, "expenses": 42000 },
+  { "month": "Nov", "year": 2025, "income": 92000, "expenses": 38000 },
+  { "month": "Dec", "year": 2025, "income": 88000, "expenses": 55000 },
+  { "month": "Jan", "year": 2026, "income": 103000,"expenses": 44900 },
+  { "month": "Feb", "year": 2026, "income": 103200,"expenses": 48699 },
+  { "month": "Mar", "year": 2026, "income": 85000, "expenses": 32149 },
+  { "month": "Apr", "year": 2026, "income": 107000,"expenses": 5700  }
+]
